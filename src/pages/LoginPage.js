@@ -27,14 +27,15 @@ export default function LoginPage() {
         e.preventDefault()
         apiAuth.login(form)
             .then(res => {
-                console.log(res.data)
                 const {id, name, token} = res.data
                 setUser(    {id, name, token}   )
-                // navigate("/subscriptions")
+                if (res.data.membership === null) {
+                    return navigate("/subscriptions")
+                }
+                navigate("/home")
             })
-            .catch(res => {
-                console.log(res.data)
-                alert(res.data)
+            .catch(err => {
+                alert(err.response.data.message)
             })
     }
 

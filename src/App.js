@@ -6,6 +6,7 @@ import SubscriptionsPage from "./pages/SubscriptionsPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const [user, setUser] = useState()
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/subscriptions" element={<SubscriptionsPage />} />
+        <Route path="/home" element={<HomePage />} />
       </Routes>
     </UserContext.Provider>
     </BrowserRouter>

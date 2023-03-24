@@ -26,12 +26,11 @@ export default function SignUpPage() {
         apiAuth.signUp(form)
         .then(res => {
             console.log(res.data)
+            navigate("/")
         })
-        .catch(res => {
-            console.log(res.data)
+        .catch(err => {
+            alert(err.response.data.message)
         })
-        
-        // navigate("/")
     }
 
     return (
