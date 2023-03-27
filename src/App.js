@@ -7,9 +7,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 import HomePage from "./pages/HomePage";
+import SubscriptionPlanPage from "./pages/SubscriptionPlanPage"
 
 function App() {
-  const [user, setUser] = useState()
+
+    const lsUser = JSON.parse(localStorage.getItem("user"))
+    const [user, setUser] = useState(lsUser)
 
   return (
     <BrowserRouter>
@@ -20,6 +23,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/subscriptions" element={<SubscriptionsPage />} />
+        <Route path="/subscriptions/:membership_id" element={<SubscriptionPlanPage />} />
         <Route path="/home" element={<HomePage />} />
       </Routes>
     </UserContext.Provider>

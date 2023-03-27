@@ -27,8 +27,10 @@ export default function LoginPage() {
         e.preventDefault()
         apiAuth.login(form)
             .then(res => {
-                const {id, name, token} = res.data
-                setUser(    {id, name, token}   )
+                console.log(res.data)
+                const {id, name, token, membership} = res.data
+                setUser(    {id, name, token, membership}   )
+                localStorage.setItem("user", JSON.stringify({id, name, token, membership}))
                 if (res.data.membership === null) {
                     return navigate("/subscriptions")
                 }
